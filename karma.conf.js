@@ -1,6 +1,14 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
+let chromeHeadlessFlags = [
+  '--headless',
+  '--disable-gpu',
+  // Without a remote debugging port, Google Chrome exits immediately.
+  '--remote-debugging-port=9222',
+  '--no-sandbox',
+];
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -36,6 +44,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+    customLaunchers: {
+      MyChromeHeadless: {
+        base: 'ChromeHeadless',
+        flags: chromeHeadlessFlags,
+      }
+    },
   });
 };
