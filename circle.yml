@@ -1,7 +1,0 @@
-machine:
-  node:
-    version: v8.9.1
-
-test:
-  override:
-    - ng test --watch=false --code-coverage
