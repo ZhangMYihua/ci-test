@@ -8,7 +8,9 @@
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-project": "ng build --prod --no-progress",
+    "test-ci": "ng test --browsers MyChromeHeadless --single-run --code-coverage --no-progress"
   },
   "private": true,
   "dependencies": {
