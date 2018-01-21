@@ -37,7 +37,7 @@ jobs:
       
       - run:
           name: angular-build
-          command: npm build-project
+          command: npm run build-project
 
 
       - run: 
