@@ -22,6 +22,6 @@ jobs:
                 command: sudo npm install -g @angular/cli@latest
             - run:
                 name: Run unit tests with karma
-                command: ng test
+                command: ng test --watch false
             - store_test_results:
                 path: test-results.xml
