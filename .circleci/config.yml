@@ -58,7 +58,7 @@ jobs:
                 key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
             - run:
                 name: Install aws cli
-                command: sudo apt-get -y -qq- install awscli
+                command: sudo apt-get -y -qq install awscli
             - run:
                 name: Deploy to s3
                 command: |
