@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-    build-job:
+    build:
         working_directory: ~/ci-test
         # The primary container is an instance of the first list image listed. Your build commands run in this container.
         docker:
