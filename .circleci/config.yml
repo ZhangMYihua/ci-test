@@ -25,9 +25,6 @@ jobs:
                 paths:
                     - ./node_modules
             - run:
-                name: Install angularcli
-                command: sudo npm install -g @angular/cli@latest
-            - run:
                 name: Linting
                 command: npm run lint
             - run:
