@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-    build:
+    build-job:
         working_directory: ~/ci-test
         # The primary container is an instance of the first list image listed. Your build commands run in this container.
         docker:
@@ -11,17 +11,60 @@ jobs:
         steps:
             - checkout
             - run:
-                name: Install node_modules with npm
+                name: Show current branch
+                command: echo ${CIRCLE_BRANCH}
+            - restore_cache:
+                keys:
+                - v1-dependencies-{{ checksum "package.json" }}
+                - v1-dependencies-
+            - run:
+                name: Install dependencies
                 command: npm install
             - save_cache:
-                key: dependency-cache-{{ checksum "package.json" }}
+                key: v1-dependencies-{{ checksum "package.json" }}
                 paths:
                     - ./node_modules
             - run:
                 name: Install angularcli
                 command: sudo npm install -g @angular/cli@latest
             - run:
+                name: Linting
+                command: npm run lint
+            - run:
                 name: Run unit tests with karma
                 command: ng test --watch false
             - store_test_results:
                 path: test-results.xml
+            # Build the project
+            - run: |
+                if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                    npm run build-qa
+                elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                    npm run build-prod
+                else
+                    npm run build-dev
+            - save_cache:
+                key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+                paths:
+                    - dist
+
+#     deploy-job:
+#         working_directory: ~/ci-test
+#         docker:
+#             - image: circleci/node:6-browsers
+#         steps:
+#             - run:
+#                 name: Deploy to S3 if tests pass and branch is Master
+#                 command: aws s3 sync jekyll/_site/docs s3://circle-production-static-site/docs/ --delete
+
+# workflows:
+#   version: 2
+#   build-deploy:
+#     jobs:
+#       - build-job
+#       - deploy-job:
+#           requires:
+#             - build-job
+#           filters:
+#             branches:
+#               only: master

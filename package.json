@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-project": "ng build --prod --single-run --no-progress",
+    "build-prod": "ng build --prod --single-run --no-progress",
+    "build-dev": "ng build --target=development --environment=dev",
+    "build-qa": "ng build --target=production --environment=qa",
     "test-ci": "ng test --browsers MyChromeHeadless --single-run --code-coverage --no-progress"
   },
   "private": true,
