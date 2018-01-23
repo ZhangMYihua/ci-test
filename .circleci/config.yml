@@ -29,7 +29,7 @@ jobs:
                 command: npm run lint
             - run:
                 name: Run unit tests with karma
-                command: ng test --watch false
+                command: npm run test
             - store_test_results:
                 path: test-results.xml
             # Build the project
