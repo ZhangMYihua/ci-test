@@ -19,7 +19,7 @@ jobs:
                 - v1-dependencies-
             - run:
                 name: Install latest cli
-                command: npm i @angular/cli@^1.2.6
+                command: npm i @angular/cli@latest
             - run:
                 name: Install dependencies
                 command: npm install
