@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-    build-job:
+    build:
         working_directory: ~/ci-test
         # The primary container is an instance of the first list image listed. Your build commands run in this container.
         docker:
@@ -47,24 +47,3 @@ jobs:
                 key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
                 paths:
                     - dist
-
-#     deploy-job:
-#         working_directory: ~/ci-test
-#         docker:
-#             - image: circleci/node:6-browsers
-#         steps:
-#             - run:
-#                 name: Deploy to S3 if tests pass and branch is Master
-#                 command: aws s3 sync jekyll/_site/docs s3://circle-production-static-site/docs/ --delete
-
-# workflows:
-#   version: 2
-#   build-deploy:
-#     jobs:
-#       - build-job
-#       - deploy-job:
-#           requires:
-#             - build-job
-#           filters:
-#             branches:
-#               only: master
