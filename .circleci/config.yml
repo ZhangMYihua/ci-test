@@ -66,11 +66,11 @@ jobs:
                 name: Deploy to s3
                 command: |
                     if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                        aws --region ca-central-1 s3 sync dist s3://yihuazhang.com/ --delete
+                        aws --region us-east-2 s3 sync dist s3://yihuazhang.com/ --delete
                     elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                        aws --region ca-central-1 s3 sync dist s3://yihuazhang.com/ --delete
+                        aws --region us-east-2 s3 sync dist s3://yihuazhang.com/ --delete
                     elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        aws --region ca-central-1 s3 sync dist s3://yihuazhang.com/ --delete
+                        aws --region us-east-2 s3 sync dist s3://yihuazhang.com/ --delete
                     fi
 
 workflows:
