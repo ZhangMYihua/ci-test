@@ -60,6 +60,9 @@ jobs:
                 name: Install aws cli
                 command: sudo apt-get -y -qq install awscli
             - run:
+                name: Setting Signature Version 4 for S3 Request Authentication
+                command: aws configure set default.s3.signature_version s3v4
+            - run:
                 name: Deploy to s3
                 command: |
                     if [ "${CIRCLE_BRANCH}" == "develop" ]; then
