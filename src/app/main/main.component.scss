@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .profile-container {
+    width: 80vw;
+    display: grid;
+    grid-template-rows: 4fr 1fr 1fr;
+    grid-template-columns: 60px 1fr 60px;
+    grid-template-areas: 
+      ". photo ."
+      ". description ."
+      ". links .";
+
+      .profile-photo {
+        object-fit: cover;
+        grid-area: photo;
+        width: 250px;
+        height: auto;
+        border-radius: 50%;
+      }
+
+      .description {
+        grid-area: description;
+      }
+
+      .media-links-list {
+        grid-area: links;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+  }
+}
