@@ -1,35 +1,50 @@
 :host {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-content: center;
 
   .profile-container {
-    width: 80vw;
+    height: 80vh;
     display: grid;
-    grid-template-rows: 4fr 1fr 1fr;
+    grid-template-rows: 1.5fr 3fr 1fr 1fr;
     grid-template-columns: 60px 1fr 60px;
+    text-align: center;
     grid-template-areas: 
+      ". . . "
       ". photo ."
       ". description ."
       ". links .";
 
       .profile-photo {
-        object-fit: cover;
         grid-area: photo;
-        width: 250px;
+        margin: 3vh auto;
+        width: 30vw;
         height: auto;
-        border-radius: 50%;
+        border: 5px solid #CFD1CE;
+
+        &:focus {
+          -webkit-transition: all .3s ease-in;
+          -moz-transition: all .3s ease-in;
+          -ms-transition: all .3s ease-in;
+          -o-transition: all .3s ease-in;
+          transition: all .3s ease-in;
+          opacity: 1;
+          transform: scale(2);
+          -ms-transform: scale(2); /* IE 9 */
+          -webkit-transform: scale(2); /* Safari and Chrome */
+        }
       }
 
       .description {
         grid-area: description;
+        font-size: 3.2vw;
       }
 
       .media-links-list {
         grid-area: links;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
+        font-size: 1.5vw;
       }
   }
 }
