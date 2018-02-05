@@ -1,0 +1,15 @@
+<div class="navbar">
+  <div class="navbar-logo" routerLink="'/'">
+    YIHUA ZHANG
+  </div>
+  <ul class="nav-container">
+    <li
+      *ngFor="let route of routes; let i = index; trackBy: trackByFn"
+      class="nav-item"
+      routerLink="{{route.routerLink}}"
+      routerLinkActive="selected"
+    >
+      {{ route.label }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+<div class="profile-container">
+  <img
+    class="profile-photo"
+    src="../../assets/profile.jpg"
+  >
+  <span class="description">
+    Yihua Zhang
+  </span>
+  <div class="media-links-list">
+    <span *ngFor="let link of mediaLinks" class="media-link">
+      {{ link.label }}
+    </span>
+  </div>
+</div>
